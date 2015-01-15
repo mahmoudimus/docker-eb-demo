@@ -66,8 +66,12 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-    sudo apt-get install python python-dev python-pip python-setuptools
-    cd /home/vagrant/
-    pip install -e .
+    sudo apt-get -qq update && apt-get install -y python python-pip python-setuptools
+    sudo pip install --upgrade pip
+    cd /home/vagrant/echoapp
+    sudo pip install -e .
   SHELL
+  #config.vm.provision "shell", inline: <<-SHELL
+  #SHELL
+
 end
