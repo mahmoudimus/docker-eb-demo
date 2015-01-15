@@ -1,15 +1,17 @@
 FROM phusion/baseimage:0.9.15
-MAINTAINER Victor Lin <hello@victorlin.me>
 
 # install dependencies
+# Install updates
 RUN apt-get -qq update && \
-    apt-get install -y \
-        python \
-        python-pip \
-    && \
+    apt-get install -y --no-install-recommends \
+       software-properties-common \
+       python                     \
+       python-pip                 \
+       python-setuptools  &&      \
+    # Clean up APT when done.
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN easy_install -U setuptools && \
+RUN pip install virtualenv                  && \
     pip install -U pip
 
 # add echoapp service
