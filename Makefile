@@ -8,6 +8,7 @@ prepare:
 	git archive -o docker-build/echoapp.tar HEAD
 
 build:
+	cp -p Dockerfile docker-build/Dockerfile
     # this tells docker to build the Dockerfile in the ./docker-build/ directory
     # and tag it so it shows up nicely under docker ps as:
     #

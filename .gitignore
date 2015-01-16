@@ -59,3 +59,4 @@ docs/_build/
 !.elasticbeanstalk/*.global.yml
 
 docker/*.tar
+docker-build/*.tar
